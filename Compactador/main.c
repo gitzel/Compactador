@@ -3,7 +3,11 @@
 
 #include "FilaPrioridade.h"
 
-#define  inteiro int    // 4bits
+typedef int inteiro;   // 4bits
+
+typedef enum{
+	false, true
+}boolean;
 
 int main()
 {
@@ -24,20 +28,24 @@ int main()
 
 void Compactar()
 {
-
+    FilaPrioridade fila;
     char caminho[100];
     printf("Digite o caminho do arquivo: ");
+
     scanf("%s", caminho);
-    printf("%s", caminho);
 
     FILE *arq;
     arq = fopen(caminho, "r");
 
+    inicie(&fila, 255);
+
     while(!feof(arq))
     {
-        No *novoNo;
-        novoNo->caracter = getc(arq);
-        novoNo->frequencia =
+        inserir(&fila, getc(arq));
     }
 
+    ordenar(&fila);
+
+    fclose(arq);
+    encerrar(&fila);
 }

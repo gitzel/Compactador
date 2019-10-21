@@ -3,3 +3,15 @@
 	<stdio.h>
 	<stdlib.h>
 
+1571661194 source:c:\users\u18189\documents\github\compactador\compactador\filaprioridade.c
+	"FilaPrioridade.h"
+	<stdio.h>
+	<stdlib.h>
+
+1571661083 c:\users\u18189\documents\github\compactador\compactador\filaprioridade.h
+
+1571661250 source:c:\users\u18189\documents\github\compactador\compactador\main.c
+	<stdio.h>
+	<stdlib.h>
+	"FilaPrioridade.h"
+

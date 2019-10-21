@@ -31,6 +31,9 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="FilaPrioridade.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="FilaPrioridade.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
