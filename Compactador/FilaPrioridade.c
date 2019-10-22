@@ -2,6 +2,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+typedef enum{
+	false, true
+}boolean;
+
 void inserir (FilaPrioridade *fila, char caracter)
 {
    int posicao = existe(fila, caracter);
@@ -62,6 +66,30 @@ void inicie(FilaPrioridade *fila, int tamanho)
 
 void encerrar(FilaPrioridade *fila){
     free(fila->vetor);
+}
+
+void converterEmArvore(FilaPrioridade *fila){
+    int j = 0;
+    while(fila->qtd > 1){
+        No novoNo;
+        boolean alocou = false;
+
+        novoNo.frequencia = fila->vetor[0].frequencia + fila->vetor[1].frequencia;
+        novoNo.esq = fila->vetor[0];
+        novoNo.dir = fila->vetor[1];
+
+        for(j = 0; j<fila->qtd; j++)
+            if(fila->vetor[j+2].frequencia > novoNo.frequencia){
+                  fila->vetor[j] = novoNo;
+                  alocou = true;
+            }
+            else if(alocou == true)
+                fila->vetor[j] = fila->vetor[j+2];
+            else
+                fila->vetor[j] = fila->vetor[j+1];
+
+        qtd--;
+    }
 }
 
 char get(FilaPrioridade *fila, int i)

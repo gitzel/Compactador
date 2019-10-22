@@ -40,9 +40,7 @@ void Compactar()
     inicie(&fila, 255);
 
     while(!feof(arq))
-    {
         inserir(&fila, getc(arq));
-    }
 
     ordenar(&fila);
 

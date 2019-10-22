@@ -1,7 +1,7 @@
 typedef struct No
 {
-    char      caracter;
-    int       frequencia;
+    char      caracter;  // 1byte
+    int       frequencia; //4bytes
     struct No *esq, *dir;
 } No;
 
