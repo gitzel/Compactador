@@ -31,6 +31,10 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="Compactador.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Compactador.h" />
 		<Unit filename="FilaPrioridade.c">
 			<Option compilerVar="CC" />
 		</Unit>
