@@ -75,20 +75,29 @@ void converterEmArvore(FilaPrioridade *fila){
         boolean alocou = false;
 
         novoNo.frequencia = fila->vetor[0].frequencia + fila->vetor[1].frequencia;
-        novoNo.esq = fila->vetor[0];
-        novoNo.dir = fila->vetor[1];
+        novoNo.esq = &fila->vetor[0];
+        novoNo.dir = &fila->vetor[1];
 
-        for(j = 0; j<fila->qtd; j++)
-            if(fila->vetor[j+2].frequencia > novoNo.frequencia){
-                  fila->vetor[j] = novoNo;
-                  alocou = true;
+        for(j = 0; j < fila->qtd - 1; j++)
+        {
+            if(j + 3 > fila->qtd && alocou == false)
+            {
+                fila->vetor[j] = novoNo;
+                alocou =true;
             }
-            else if(alocou == true)
-                fila->vetor[j] = fila->vetor[j+2];
-            else
-                fila->vetor[j] = fila->vetor[j+1];
 
-        qtd--;
+            else
+            if(fila->vetor[j+2].frequencia > novoNo.frequencia && alocou == false){
+                    fila->vetor[j] = novoNo;
+                    alocou = true;
+                }
+            else if(alocou == true)
+                fila->vetor[j] = fila->vetor[j+1];
+            else
+                fila->vetor[j] = fila->vetor[j+2];
+
+        }
+        fila->qtd--;
     }
 }
 

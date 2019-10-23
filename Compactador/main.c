@@ -26,10 +26,14 @@ int main()
     return 0;
 }
 
+
+
 void Compactar()
 {
     FilaPrioridade fila;
+    char c;
     char caminho[100];
+
     printf("Digite o caminho do arquivo: ");
 
     scanf("%s", caminho);
@@ -39,10 +43,13 @@ void Compactar()
 
     inicie(&fila, 255);
 
-    while(!feof(arq))
-        inserir(&fila, getc(arq));
+    while((c = fgetc(arq)) != EOF)
+        inserir(&fila, c);
 
     ordenar(&fila);
+
+    converterEmArvore(&fila);
+    No arvore = fila.vetor[0];
 
     fclose(arq);
     encerrar(&fila);
