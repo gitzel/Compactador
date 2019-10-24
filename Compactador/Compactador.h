@@ -1,3 +1,6 @@
+
+#include "structs.h"
+
 typedef struct {
     int  qtd;
     char qual;
@@ -10,8 +13,9 @@ typedef struct {
     int qtd;
 }Compactador;
 
-extern void inicie(Compactador *compactador, No inicio);
+extern void inicieCompactador(Compactador *compactador, No *inicio);
 extern void percorrerInOrdem(Compactador *compactador);
-void percorrerInOrdem(Compactador *compactador, No atual);
 extern int qtdFolhas(Compactador *compactador);
-int qtdFolhas(No atual);
+int quantasFolhas(No *atual);
+void percorrer(Compactador *compactador, No *atual);
+

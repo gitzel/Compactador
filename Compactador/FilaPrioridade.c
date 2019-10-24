@@ -15,6 +15,8 @@ void inserir (FilaPrioridade *fila, char caracter)
        No novoNo;
        novoNo.caracter = caracter;
        novoNo.frequencia = 1;
+       novoNo.esq = NULL;
+       novoNo.dir = NULL;
        fila->vetor[fila->qtd] = novoNo;
        fila->qtd++;
    }else
@@ -57,7 +59,7 @@ void aumentarFrequencia (FilaPrioridade *fila, int posicao)
    fila->vetor[posicao].frequencia++;
 }
 
-void inicie(FilaPrioridade *fila, int tamanho)
+void inicieFila(FilaPrioridade *fila, int tamanho)
 {
     fila->tamanho = tamanho;
     fila->qtd = 0;
@@ -71,24 +73,25 @@ void encerrar(FilaPrioridade *fila){
 void converterEmArvore(FilaPrioridade *fila){
     int j = 0;
     while(fila->qtd > 1){
-        No novoNo;
+        No *novoNo;
+        novoNo = (*No) malloc(sizeof(No));
         boolean alocou = false;
-
-        novoNo.frequencia = fila->vetor[0].frequencia + fila->vetor[1].frequencia;
-        novoNo.esq = &fila->vetor[0];
-        novoNo.dir = &fila->vetor[1];
+        novoNo->caracter = NULL;
+        novoNo->frequencia = fila->vetor[0].frequencia + fila->vetor[1].frequencia;
+        novoNo->esq = &fila->vetor[0];
+        novoNo->dir = &fila->vetor[1];
 
         for(j = 0; j < fila->qtd - 1; j++)
         {
             if(j + 3 > fila->qtd && alocou == false)
             {
-                fila->vetor[j] = novoNo;
+                fila->vetor[j] = *novoNo;
                 alocou =true;
             }
 
             else
-            if(fila->vetor[j+2].frequencia > novoNo.frequencia && alocou == false){
-                    fila->vetor[j] = novoNo;
+            if(fila->vetor[j+2].frequencia > novoNo->frequencia && alocou == false){
+                    fila->vetor[j] = *novoNo;
                     alocou = true;
                 }
             else if(alocou == true)

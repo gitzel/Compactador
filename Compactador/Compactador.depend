@@ -1,8 +1,9 @@
 # depslib dependency file v1.0
-1571839952 source:c:\users\u18194\documents\github\compactador\compactador\main.c
+1571935129 source:c:\users\u18194\documents\github\compactador\compactador\main.c
 	<stdio.h>
 	<stdlib.h>
 	"FilaPrioridade.h"
+	"Compactador.h"
 
 1571661194 source:c:\users\u18189\documents\github\compactador\compactador\filaprioridade.c
 	"FilaPrioridade.h"
@@ -16,10 +17,21 @@
 	<stdlib.h>
 	"FilaPrioridade.h"
 
-1571833519 c:\users\u18194\documents\github\compactador\compactador\filaprioridade.h
+1571934258 c:\users\u18194\documents\github\compactador\compactador\filaprioridade.h
+	"structs.h"
 
-1571840235 source:c:\users\u18194\documents\github\compactador\compactador\filaprioridade.c
+1571935648 source:c:\users\u18194\documents\github\compactador\compactador\filaprioridade.c
 	"FilaPrioridade.h"
 	<stdio.h>
 	<stdlib.h>
+
+1571934586 c:\users\u18194\documents\github\compactador\compactador\structs.h
+
+1571934844 source:c:\users\u18194\documents\github\compactador\compactador\compactador.c
+	"Compactador.h"
+	<stdio.h>
+	<stdlib.h>
+
+1571934491 c:\users\u18194\documents\github\compactador\compactador\compactador.h
+	"structs.h"
 
