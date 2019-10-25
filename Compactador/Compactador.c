@@ -4,12 +4,12 @@
 
 
 void inicieCompactador(Compactador *compactador, No *inicio){
-    compactador->raiz = *inicio;
+    compactador->raiz = inicio;
     compactador->qtd = 0;
     compactador->codigo = (Codigo*) malloc(quantasFolhas(inicio) * sizeof(Codigo));
 }
 
-void percorrer(Compactador *compactador, No *atual){
+void percorrer(Compactador *compactador, No *atual, char[]){
     if(atual != NULL){
          percorrer(compactador, atual->esq);
          if(atual->esq == NULL && atual->dir == NULL){
@@ -24,7 +24,7 @@ void percorrer(Compactador *compactador, No *atual){
 }
 
 void percorrerInOrdem(Compactador *compactador){
-    percorrer(&compactador, &compactador->raiz);
+    percorrer(compactador, compactador->raiz);
 }
 
 int quantasFolhas(No *noAtual){

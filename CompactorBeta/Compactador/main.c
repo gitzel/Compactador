@@ -7,7 +7,7 @@
 typedef int inteiro;   // 4bits
 
 typedef enum{
-	false, true
+    false, true
 }boolean;
 
 void Compactar()
@@ -34,8 +34,9 @@ void Compactar()
     converterEmArvore(&fila);
     inicieCompactador(&comp, &fila.vetor[0]);
     percorrerInOrdem(&comp);
+    printf("aaaaaa");
     fclose(arq);
-    encerrar(&fila);
+    //encerrar(&fila);
 }
 
 
@@ -55,7 +56,3 @@ int main()
 
     return 0;
 }
-
-
-
-
