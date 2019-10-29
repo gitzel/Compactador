@@ -1,26 +1,39 @@
+//
+// Created by u18194 on 25/10/2019.
+//
+
+
 #include "FilaPrioridade.h"
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef enum{
-	false, true
-}boolean;
 
 void inserir (FilaPrioridade *fila, char caracter)
 {
-   int posicao = existe(fila, caracter);
+    int posicao = existe(fila, caracter);
 
-   if(posicao == -1)
-   {
-       No novoNo;
-       novoNo.caracter = caracter;
-       novoNo.frequencia = 1;
-       novoNo.esq = NULL;
-       novoNo.dir = NULL;
-       fila->vetor[fila->qtd] = novoNo;
-       fila->qtd++;
-   }else
-      aumentarFrequencia(fila, posicao);
+    if(posicao == -1)
+    {
+        No novoNo;
+        novoNo.caracter = caracter;
+        novoNo.frequencia = 1;
+        novoNo.esq = NULL;
+        novoNo.dir = NULL;
+        fila->vetor[fila->qtd] = novoNo;
+        fila->qtd++;
+    }else
+        aumentarFrequencia(fila, posicao);
+}
+
+void inserirCompactado(FilaPrioridade *fila, char caracter, int frequencia)
+{
+    No novoNo;
+    novoNo.caracter = caracter;
+    novoNo.frequencia = frequencia;
+    novoNo.esq = NULL;
+    novoNo.dir = NULL;
+    fila->vetor[fila->qtd] = novoNo;
+    fila->qtd++;
 }
 
 void ordenar(FilaPrioridade *fila){
@@ -56,7 +69,7 @@ int existe (FilaPrioridade *fila, char caracter)
 
 void aumentarFrequencia (FilaPrioridade *fila, int posicao)
 {
-   fila->vetor[posicao].frequencia++;
+    fila->vetor[posicao].frequencia++;
 }
 
 void inicieFila(FilaPrioridade *fila, int tamanho)

@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/u18194/Desktop/Compactador/Compactador.c
+Compactador.h
+C:/Users/u18194/Desktop/Compactador/Compactador.h
+stdio.h
+-
+stdlib.h
+-
+
+C:/Users/u18194/Desktop/Compactador/Compactador.h
+stdio.h
+-
+Struct.h
+C:/Users/u18194/Desktop/Compactador/Struct.h
+
+C:/Users/u18194/Desktop/Compactador/Struct.h
+
