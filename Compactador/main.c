@@ -4,42 +4,11 @@
 #include "FilaPrioridade.h"
 #include "Compactador.h"
 
-void Descompactar() {
+typedef int inteiro;   // 4bits
 
-    FilaPrioridade fila;
-    inicieFila(&fila, 255);
-
-    FILE *arq;
-    arq = fopen("C:/temp/teste.txt", "rb");
-    char c;
-
-    int quantosLixos;
-    fread(&quantosLixos, sizeof(int), 1, arq);
-    fflush(arq);
-    printf("%d\n", quantosLixos);
-    int qtd;
-    fread(&qtd, sizeof(int), 1, arq);
-    fflush(arq);
-    printf("%d", qtd);
-/*
-    int i;
-    for(i = 0; i < qtd; i++){
-        int freq;
-        int quantosBits;
-        fread(&c, sizeof(char), 1, arq);
-        fread(&freq, sizeof(int), 1, arq);
-        fread(&quantosBits, sizeof(int), 1, arq);
-        inserirCompactado(&fila, c, freq);
-    }
-
-    for(i = 0; i < qtd; i++){
-
-    }
-    ordenar(&fila);*/
-
-    fclose(arq);
-}
-
+typedef enum{
+	false, true
+}boolean;
 
 void Compactar()
 {
@@ -65,10 +34,6 @@ void Compactar()
     converterEmArvore(&fila);
     inicieCompactador(&comp, &fila.vetor[0]);
     percorrerInOrdem(&comp);
-    printf("aaaaaa");
-    fclose(arq);
-    arq = fopen("C:/temp/teste.txt", "wb");
-    compactarArquivo(&comp, arq);
     fclose(arq);
     encerrar(&fila);
 }
@@ -81,14 +46,16 @@ int main()
     printf("1 - Compactar\n");
     printf("2 - Descompactar\n");
 
-    scanf("%d", &resposta);
+    resposta = scanf("%d", &resposta);
 
     switch(resposta)
     {
         case 1: Compactar();break;
-        case 2: Descompactar();break;
     }
 
     return 0;
 }
+
+
+
 

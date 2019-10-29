@@ -1,3 +1,0 @@
-C:/Users/u18194/Desktop/Compactador/cmake-build-debug/CMakeFiles/Compactador.dir
-C:/Users/u18194/Desktop/Compactador/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/u18194/Desktop/Compactador/cmake-build-debug/CMakeFiles/rebuild_cache.dir

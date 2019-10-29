@@ -1,4 +1,0 @@
-"C:\Users\u18194\AppData\Local\JetBrains\CLion 2019.2\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=C:/Users/u18194/Desktop/MinGw/MinGW/bin/mingw32-make.exe -DCMAKE_C_COMPILER=C:/Users/u18194/Desktop/MinGw/MinGW/bin/gcc.exe -DCMAKE_CXX_COMPILER=C:/Users/u18194/Desktop/MinGw/MinGW/bin/g++.exe -G "CodeBlocks - MinGW Makefiles" C:\Users\u18194\Desktop\Compactador
--- Configuring done
--- Generating done
--- Build files have been written to: C:/Users/u18194/Desktop/Compactador/cmake-build-debug
