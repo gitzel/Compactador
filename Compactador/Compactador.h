@@ -10,13 +10,14 @@
 
 typedef struct {
     No  *raiz;
+    FILE *saida;
 }Compactador;
 
-extern void inicieCompactador(Compactador *compactador, No *inicio);
-extern void printarArvore(No *noAtual);
+extern void inicieCompactador(Compactador *compactador, No *inicio, FILE *saida);
+extern void printarArvore(Compactador *compactador, No *noAtual);
 extern inteiro qtdFolhas(Compactador *compactador);
 inteiro quantasFolhas(No *atual);
-void percorrer(Compactador *compactador, No *atual, char *codigo, inteiro qtd);
+void percorrer(Compactador *compactador, No *atual, char *codigo, inteiro *qtd, inteiro *qtd1);
 extern void compactarArquivo(Compactador *compactador, FILE *arq);
 extern void descompactarArquivo(Compactador *compactador, FILE *entrada, FILE *saida);
 boolean ehFolha(No *no);

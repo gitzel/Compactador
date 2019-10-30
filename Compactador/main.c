@@ -35,7 +35,7 @@ void Descompactar() {
     ordenar(&fila);
     converterEmArvore(&fila);
     Compactador descompactador;
-    inicieCompactador(&descompactador, &fila.vetor[0]);
+    inicieCompactador(&descompactador, &fila.vetor[0], saida);
     descompactarArquivo(&descompactador, entrada,saida);
     fclose(entrada);
     fclose(saida);
@@ -64,8 +64,11 @@ void Compactar()
     ordenar(&fila);
 
     converterEmArvore(&fila);
-    inicieCompactador(&comp, &getRaiz(&fila));
+
     fclose(arq);
+
+    No raiz = getRaiz(&fila);
+    inicieCompactador(&comp, &raiz, arq);
     arq = fopen("C:/temp/teste.txt", "wb");
     compactarArquivo(&comp, arq);
     fclose(arq);

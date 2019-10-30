@@ -4,6 +4,13 @@
 
 #ifndef COMPACTADOR_STRUCT_H
 #define COMPACTADOR_STRUCT_H
+
+typedef int inteiro;   // 4bits
+
+typedef enum{
+    false, true
+}boolean;
+
 typedef struct No
 {
     char      caracter;  // 1byte
@@ -11,10 +18,6 @@ typedef struct No
     struct No *esq, *dir;
 } No;
 
-typedef int inteiro;   // 4bits
 
-typedef enum{
-    false, true
-}boolean;
 
 #endif //COMPACTADOR_STRUCT_H

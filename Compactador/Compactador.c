@@ -7,37 +7,54 @@
 #include <stdlib.h>
 
 
-void inicieCompactador(Compactador *compactador, No *inicio){
+void inicieCompactador(Compactador *compactador, No *inicio, FILE *saida){
     compactador->raiz = inicio;
+    compactador->saida = saida;
 }
 
-void percorrer(Compactador *compactador, No *atual,  char *codigo, inteiro *qtd){
+void percorrer(Compactador *compactador, No *atual,  char *codigo, inteiro *qtd, inteiro *quantidadeDeUm){
     if(atual != NULL){
-        if(qtd == 8){
-            fwrite(codigo, sizeof(char), 1, arq);
-            fflush(arq);
+        if(*qtd == 8){
+            fwrite(codigo, sizeof(char), 1, compactador->saida);
+            fflush(compactador->saida);
             *qtd = 0;
             *codigo = 0;
         }
 
         if(atual->esq != NULL) {
-            percorrer(compactador, atual->esq, codigo, &(*qtd + 1));
+            *qtd = *qtd + 1;
+            percorrer(compactador, atual->esq, codigo, qtd, quantidadeDeUm);
         }
 
         if(atual->dir != NULL) {
-            codigo |= (1<<*qtd);
-            percorrer(compactador, atual->dir, codigo,  &(*qtd + 1));
+            inteiro i;
+            *qtd = *qtd + 1;
+            *quantidadeDeUm = *quantidadeDeUm + 1;
+            if(*quantidadeDeUm > 1)
+                for(i = 0; i < *quantidadeDeUm;i++) {
+                    *codigo |= (1u << (7 - *qtd - *quantidadeDeUm + i));
+                    *qtd = *qtd + 1;
+                }
+            else
+                *codigo |= (1u << (7 - *qtd));
+
+
+
+            percorrer(compactador, atual->dir, codigo,  qtd, quantidadeDeUm);
+            *quantidadeDeUm = *quantidadeDeUm - 1;
+
         }
+
     }
 }
 
-void printarArvore(No *noAtual){
-    if(noAtual != null)
+void printarArvore(Compactador *compactador, No *noAtual){
+    if(noAtual != NULL)
     {
-        printarArvore(noAtual->esq);
-        fwrite(&noAtual->caracter,   sizeof(char), 1, arq);
-        fwrite(&noAtual->frequencia, sizeof(inteiro), 1, arq);
-        printarArvore(noAtual->dir);
+        printarArvore(compactador,noAtual->esq);
+        fwrite(&noAtual->caracter,   sizeof(char), 1, compactador->saida);
+        fwrite(&noAtual->frequencia, sizeof(inteiro), 1, compactador->saida);
+        printarArvore(compactador, noAtual->dir);
     }
 }
 
@@ -52,7 +69,7 @@ inteiro quantasFolhas(No *noAtual){
 }
 
 inteiro qtdFolhas(Compactador *compactador) {
-    return(quantasFolhas(&compactador->raiz));
+    return(quantasFolhas(compactador->raiz));
 }
 
 boolean ehFolha(No* no){
@@ -67,18 +84,19 @@ void compactarArquivo(Compactador *compactador, FILE *arq)
     inteiro qtd = quantasFolhas(compactador->raiz);
     inteiro qtdLixo= 0;
     char codigo = 0;
-    inteiro qtd = 0;
+    inteiro auxQtd = 0;
 
     fwrite(&qtd, sizeof(inteiro), 1, arq);
     fwrite(&qtd, sizeof(inteiro), 1, arq);
 
-    printarArvore(compactador->raiz);
+    printarArvore(compactador, compactador->raiz);
 
-    percorrer(compactador, compactador->raiz, &codigo, &qtd);
+    inteiro  qtd1 = 0;
+    percorrer(compactador, compactador->raiz, &codigo, &auxQtd, &qtd1);
 
-    qtdLixo = 8 - qtd;
+    qtdLixo = 8 - auxQtd;
 
-    if(qtd != 8) {
+    if(auxQtd != 0) {
         fwrite(&codigo, sizeof(char), 1, arq);
         fflush(arq);
     }

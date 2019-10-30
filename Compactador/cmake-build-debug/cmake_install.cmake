@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/u18194/Desktop/Compactador
+# Install script for directory: C:/Users/u18194/Documents/GitHub/Compactador/Compactador
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/Users/u18194/Desktop/Compactador/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/Users/u18194/Documents/GitHub/Compactador/Compactador/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

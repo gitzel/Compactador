@@ -42,10 +42,10 @@ RM = "C:\Users\u18194\AppData\Local\JetBrains\CLion 2019.2\bin\cmake\win\bin\cma
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\u18194\Desktop\Compactador
+CMAKE_SOURCE_DIR = C:\Users\u18194\Documents\GitHub\Compactador\Compactador
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\u18194\Desktop\Compactador\cmake-build-debug
+CMAKE_BINARY_DIR = C:\Users\u18194\Documents\GitHub\Compactador\Compactador\cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/Compactador.dir/depend.make
@@ -58,42 +58,42 @@ include CMakeFiles/Compactador.dir/flags.make
 
 CMakeFiles/Compactador.dir/main.c.obj: CMakeFiles/Compactador.dir/flags.make
 CMakeFiles/Compactador.dir/main.c.obj: ../main.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\u18194\Desktop\Compactador\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/Compactador.dir/main.c.obj"
-	C:\Users\u18194\Desktop\MinGw\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\Compactador.dir\main.c.obj   -c C:\Users\u18194\Desktop\Compactador\main.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\u18194\Documents\GitHub\Compactador\Compactador\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/Compactador.dir/main.c.obj"
+	C:\Users\u18194\Desktop\MinGw\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\Compactador.dir\main.c.obj   -c C:\Users\u18194\Documents\GitHub\Compactador\Compactador\main.c
 
 CMakeFiles/Compactador.dir/main.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Compactador.dir/main.c.i"
-	C:\Users\u18194\Desktop\MinGw\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\u18194\Desktop\Compactador\main.c > CMakeFiles\Compactador.dir\main.c.i
+	C:\Users\u18194\Desktop\MinGw\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\u18194\Documents\GitHub\Compactador\Compactador\main.c > CMakeFiles\Compactador.dir\main.c.i
 
 CMakeFiles/Compactador.dir/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Compactador.dir/main.c.s"
-	C:\Users\u18194\Desktop\MinGw\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\u18194\Desktop\Compactador\main.c -o CMakeFiles\Compactador.dir\main.c.s
+	C:\Users\u18194\Desktop\MinGw\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\u18194\Documents\GitHub\Compactador\Compactador\main.c -o CMakeFiles\Compactador.dir\main.c.s
 
 CMakeFiles/Compactador.dir/Compactador.c.obj: CMakeFiles/Compactador.dir/flags.make
 CMakeFiles/Compactador.dir/Compactador.c.obj: ../Compactador.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\u18194\Desktop\Compactador\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/Compactador.dir/Compactador.c.obj"
-	C:\Users\u18194\Desktop\MinGw\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\Compactador.dir\Compactador.c.obj   -c C:\Users\u18194\Desktop\Compactador\Compactador.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\u18194\Documents\GitHub\Compactador\Compactador\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/Compactador.dir/Compactador.c.obj"
+	C:\Users\u18194\Desktop\MinGw\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\Compactador.dir\Compactador.c.obj   -c C:\Users\u18194\Documents\GitHub\Compactador\Compactador\Compactador.c
 
 CMakeFiles/Compactador.dir/Compactador.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Compactador.dir/Compactador.c.i"
-	C:\Users\u18194\Desktop\MinGw\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\u18194\Desktop\Compactador\Compactador.c > CMakeFiles\Compactador.dir\Compactador.c.i
+	C:\Users\u18194\Desktop\MinGw\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\u18194\Documents\GitHub\Compactador\Compactador\Compactador.c > CMakeFiles\Compactador.dir\Compactador.c.i
 
 CMakeFiles/Compactador.dir/Compactador.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Compactador.dir/Compactador.c.s"
-	C:\Users\u18194\Desktop\MinGw\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\u18194\Desktop\Compactador\Compactador.c -o CMakeFiles\Compactador.dir\Compactador.c.s
+	C:\Users\u18194\Desktop\MinGw\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\u18194\Documents\GitHub\Compactador\Compactador\Compactador.c -o CMakeFiles\Compactador.dir\Compactador.c.s
 
 CMakeFiles/Compactador.dir/FilaPrioridade.c.obj: CMakeFiles/Compactador.dir/flags.make
 CMakeFiles/Compactador.dir/FilaPrioridade.c.obj: ../FilaPrioridade.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\u18194\Desktop\Compactador\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/Compactador.dir/FilaPrioridade.c.obj"
-	C:\Users\u18194\Desktop\MinGw\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\Compactador.dir\FilaPrioridade.c.obj   -c C:\Users\u18194\Desktop\Compactador\FilaPrioridade.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\u18194\Documents\GitHub\Compactador\Compactador\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/Compactador.dir/FilaPrioridade.c.obj"
+	C:\Users\u18194\Desktop\MinGw\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\Compactador.dir\FilaPrioridade.c.obj   -c C:\Users\u18194\Documents\GitHub\Compactador\Compactador\FilaPrioridade.c
 
 CMakeFiles/Compactador.dir/FilaPrioridade.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Compactador.dir/FilaPrioridade.c.i"
-	C:\Users\u18194\Desktop\MinGw\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\u18194\Desktop\Compactador\FilaPrioridade.c > CMakeFiles\Compactador.dir\FilaPrioridade.c.i
+	C:\Users\u18194\Desktop\MinGw\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\u18194\Documents\GitHub\Compactador\Compactador\FilaPrioridade.c > CMakeFiles\Compactador.dir\FilaPrioridade.c.i
 
 CMakeFiles/Compactador.dir/FilaPrioridade.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Compactador.dir/FilaPrioridade.c.s"
-	C:\Users\u18194\Desktop\MinGw\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\u18194\Desktop\Compactador\FilaPrioridade.c -o CMakeFiles\Compactador.dir\FilaPrioridade.c.s
+	C:\Users\u18194\Desktop\MinGw\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\u18194\Documents\GitHub\Compactador\Compactador\FilaPrioridade.c -o CMakeFiles\Compactador.dir\FilaPrioridade.c.s
 
 # Object files for target Compactador
 Compactador_OBJECTS = \
@@ -111,7 +111,7 @@ Compactador.exe: CMakeFiles/Compactador.dir/build.make
 Compactador.exe: CMakeFiles/Compactador.dir/linklibs.rsp
 Compactador.exe: CMakeFiles/Compactador.dir/objects1.rsp
 Compactador.exe: CMakeFiles/Compactador.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\u18194\Desktop\Compactador\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking C executable Compactador.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\u18194\Documents\GitHub\Compactador\Compactador\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking C executable Compactador.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\Compactador.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -124,6 +124,6 @@ CMakeFiles/Compactador.dir/clean:
 .PHONY : CMakeFiles/Compactador.dir/clean
 
 CMakeFiles/Compactador.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\u18194\Desktop\Compactador C:\Users\u18194\Desktop\Compactador C:\Users\u18194\Desktop\Compactador\cmake-build-debug C:\Users\u18194\Desktop\Compactador\cmake-build-debug C:\Users\u18194\Desktop\Compactador\cmake-build-debug\CMakeFiles\Compactador.dir\DependInfo.cmake --color=$(COLOR)
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\u18194\Documents\GitHub\Compactador\Compactador C:\Users\u18194\Documents\GitHub\Compactador\Compactador C:\Users\u18194\Documents\GitHub\Compactador\Compactador\cmake-build-debug C:\Users\u18194\Documents\GitHub\Compactador\Compactador\cmake-build-debug C:\Users\u18194\Documents\GitHub\Compactador\Compactador\cmake-build-debug\CMakeFiles\Compactador.dir\DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/Compactador.dir/depend
 
