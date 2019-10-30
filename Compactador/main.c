@@ -15,19 +15,19 @@ void Descompactar() {
     entrada = fopen("C:/temp/teste.txt", "rb");
     char c;
 
-    int quantosLixos;
-    fread(&quantosLixos, sizeof(int), 1, entrada);
+    inteiro quantosLixos;
+    fread(&quantosLixos, sizeof(inteiro), 1, entrada);
 
-    int qtd;
-    fread(&qtd, sizeof(int), 1, entrada);
+    inteiro qtd;
+    fread(&qtd, sizeof(inteiro), 1, entrada);
 
 
-    int i;
+    inteiro i;
     for(i = 0; i < qtd; i++){
-        int freq;
-        int quantosBits;
+        inteiro freq;
+        inteiro quantosBits;
         fread(&c, sizeof(char), 1, entrada);
-        fread(&freq, sizeof(int), 1, entrada);
+        fread(&freq, sizeof(inteiro), 1, entrada);
         inserirCompactado(&fila, c, freq);
 
     }
@@ -64,9 +64,7 @@ void Compactar()
     ordenar(&fila);
 
     converterEmArvore(&fila);
-    inicieCompactador(&comp, &fila.vetor[0]);
-    percorrerInOrdem(&comp);
-    printf("aaaaaa");
+    inicieCompactador(&comp, &getRaiz(&fila));
     fclose(arq);
     arq = fopen("C:/temp/teste.txt", "wb");
     compactarArquivo(&comp, arq);

@@ -10,7 +10,7 @@
 
 void inserir (FilaPrioridade *fila, char caracter)
 {
-    int posicao = existe(fila, caracter);
+    inteiro posicao = existe(fila, caracter);
 
     if(posicao == -1)
     {
@@ -25,7 +25,7 @@ void inserir (FilaPrioridade *fila, char caracter)
         aumentarFrequencia(fila, posicao);
 }
 
-void inserirCompactado(FilaPrioridade *fila, char caracter, int frequencia)
+void inserirCompactado(FilaPrioridade *fila, char caracter, inteiro frequencia)
 {
     No novoNo;
     novoNo.caracter = caracter;
@@ -37,7 +37,7 @@ void inserirCompactado(FilaPrioridade *fila, char caracter, int frequencia)
 }
 
 void ordenar(FilaPrioridade *fila){
-    int min, outer, inner;
+    inteiro min, outer, inner;
     No temp;
 
     for (outer = 0; outer < fila->qtd; outer++)
@@ -57,9 +57,9 @@ void ordenar(FilaPrioridade *fila){
     }
 }
 
-int existe (FilaPrioridade *fila, char caracter)
+inteiro existe (FilaPrioridade *fila, char caracter)
 {
-    int i;
+    inteiro i;
     for(i =0; i<fila->qtd; i++)
         if(fila->vetor[i].caracter == caracter)
             return i;
@@ -67,12 +67,12 @@ int existe (FilaPrioridade *fila, char caracter)
     return -1;
 }
 
-void aumentarFrequencia (FilaPrioridade *fila, int posicao)
+void aumentarFrequencia (FilaPrioridade *fila, inteiro posicao)
 {
     fila->vetor[posicao].frequencia++;
 }
 
-void inicieFila(FilaPrioridade *fila, int tamanho)
+void inicieFila(FilaPrioridade *fila, inteiro tamanho)
 {
     fila->tamanho = tamanho;
     fila->qtd = 0;
@@ -84,7 +84,7 @@ void encerrar(FilaPrioridade *fila){
 }
 
 void converterEmArvore(FilaPrioridade *fila){
-    int j = 0;
+    inteiro j = 0;
     while(fila->qtd > 1){
         No novoNo;
         boolean alocou = false;
@@ -123,7 +123,12 @@ void converterEmArvore(FilaPrioridade *fila){
     }
 }
 
-char get(FilaPrioridade *fila, int i)
+char get(FilaPrioridade *fila, inteiro i)
 {
     return fila->vetor[i].caracter;
+}
+
+No getRaiz(FilaPrioridade *fila)
+{
+    return fila->vetor[0];
 }
