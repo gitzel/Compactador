@@ -7,56 +7,34 @@
 #include <stdlib.h>
 
 
-void inicieCompactador(Compactador *compactador, No *inicio, FILE *saida){
+void inicieCompactador(Compactador *compactador, No *inicio){
+    tamanhoCodigo =quantasFolhas(inicio);
     compactador->raiz = inicio;
-    compactador->saida = saida;
+    compactador->qtd = 0;
+    compactador->codigo = (Codigo*) malloc(tamanhoCodigo * sizeof(Codigo));
 }
 
-void percorrer(Compactador *compactador, No *atual,  char *codigo, inteiro *qtd, inteiro *quantidadeDeUm){
+void percorrer(Compactador *compactador, No *atual,  char *codigo, int qtd){
     if(atual != NULL){
-        if(*qtd == 8){
-            fwrite(codigo, sizeof(char), 1, compactador->saida);
-            fflush(compactador->saida);
-            *qtd = 0;
-            *codigo = 0;
-        }
-
         if(atual->esq != NULL) {
-            *qtd = *qtd + 1;
-            percorrer(compactador, atual->esq, codigo, qtd, quantidadeDeUm);
+            codigo[qtd] = '0';
+            percorrer(compactador, atual->esq, codigo, qtd + 1);
         }
-
+        if(atual->esq == NULL && atual->dir == NULL){
+            compactador->codigo[compactador->qtd].freq = atual->frequencia; //o codigo que a gente não sabe;
+            compactador->codigo[compactador->qtd].qual = atual->caracter;//o codigo que a gente não sabe;
+            compactador->codigo[compactador->qtd].quantosBits = qtd;
+            compactador->codigo[compactador->qtd].byte = codigo;
+            compactador->qtd++;
+            printf("char = %c freq = %d codigo = %s\n",atual->caracter,atual->frequencia, codigo);
+        }
         if(atual->dir != NULL) {
-            inteiro i;
-            *qtd = *qtd + 1;
-            *quantidadeDeUm = *quantidadeDeUm + 1;
-            if(*quantidadeDeUm > 1)
-                for(i = 0; i < *quantidadeDeUm;i++) {
-                    *codigo |= (1u << (7 - *qtd - *quantidadeDeUm + i));
-                    *qtd = *qtd + 1;
-                }
-            else
-                *codigo |= (1u << (7 - *qtd));
-
-
-
-            percorrer(compactador, atual->dir, codigo,  qtd, quantidadeDeUm);
-            *quantidadeDeUm = *quantidadeDeUm - 1;
-
+            codigo[qtd] = '1';
+            percorrer(compactador, atual->dir, codigo, qtd + 1);
         }
-
     }
 }
 
-void printarArvore(Compactador *compactador, No *noAtual){
-    if(noAtual != NULL)
-    {
-        printarArvore(compactador,noAtual->esq);
-        fwrite(&noAtual->caracter,   sizeof(char), 1, compactador->saida);
-        fwrite(&noAtual->frequencia, sizeof(inteiro), 1, compactador->saida);
-        printarArvore(compactador, noAtual->dir);
-    }
-}
 
 inteiro quantasFolhas(No *noAtual){
     if (noAtual == NULL)
@@ -81,28 +59,66 @@ boolean ehFolha(No* no){
 
 void compactarArquivo(Compactador *compactador, FILE *arq)
 {
-    inteiro qtd = quantasFolhas(compactador->raiz);
-    inteiro qtdLixo= 0;
-    char codigo = 0;
-    inteiro auxQtd = 0;
+    inteiro i;
+    inteiro qtd = compactador->qtd;
+    inteiro quantosBits = 0;
+    char *aux;
+    aux = (char*) malloc(sizeof(char) * 8);
+    char byte;
 
     fwrite(&qtd, sizeof(inteiro), 1, arq);
     fwrite(&qtd, sizeof(inteiro), 1, arq);
 
-    printarArvore(compactador, compactador->raiz);
+    for(i = 0; i < qtd; i++)
+    {
+        Codigo codigo = compactador->codigo[i];
+        fwrite(&codigo.qual, sizeof(char), 1, arq);
+        fwrite(&codigo.freq, sizeof(inteiro), 1, arq);
+    }
 
-    inteiro  qtd1 = 0;
-    percorrer(compactador, compactador->raiz, &codigo, &auxQtd, &qtd1);
+    for(i = 0; i < qtd; i++)
+    {
+        Codigo codigo = compactador->codigo[i];
+        int bits = codigo.quantosBits;
 
-    qtdLixo = 8 - auxQtd;
+        int j;
+        int difPra8 = 0;
 
-    if(auxQtd != 0) {
-        fwrite(&codigo, sizeof(char), 1, arq);
+        if(bits + quantosBits > 8)
+            difPra8 = bits - 8;
+
+
+        for(j = 0; j < bits - difPra8; j++)
+        {
+            if(codigo.byte[j] == '1')
+                byte|= (1u << (7 - (quantosBits + j)));
+        }
+
+        quantosBits += bits;
+
+        if(quantosBits >= 8) {
+            fwrite(byte, sizeof(char), 1, arq);
+            fflush(arq);
+            if (quantosBits == 8)
+                quantosBits = 0;
+            else
+            {
+                for(j = 0; j < difPra8; j++)
+                    byte[j] = codigo.codigo[7 + j];
+                quantosBits = difPra8;
+            }
+        }
+    }
+
+    int quantosLixos = 0;
+    if(quantosBits != 0) {
+        quantosBits = 8 - quantosBits;
+        fwrite(byte, sizeof(char), 8, arq);
         fflush(arq);
     }
 
     fseek(arq, 0, SEEK_SET);
-    fwrite(&qtdLixo, sizeof(inteiro), 1, arq);
+    fwrite(&quantosLixos, sizeof(int), 1, arq);
     fflush(arq);
 }
 
