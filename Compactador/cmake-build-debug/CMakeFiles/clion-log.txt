@@ -1,17 +1,39 @@
-"C:\Users\u18194\AppData\Local\JetBrains\CLion 2019.2\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=C:/Users/u18194/Desktop/MinGw/MinGW/bin/mingw32-make.exe -DCMAKE_C_COMPILER=C:/Users/u18194/Desktop/MinGw/MinGW/bin/gcc.exe -DCMAKE_CXX_COMPILER=C:/Users/u18194/Desktop/MinGw/MinGW/bin/g++.exe -G "CodeBlocks - MinGW Makefiles" C:\Users\u18194\Documents\GitHub\Compactador\Compactador
--- The C compiler identification is GNU 6.3.0
--- Check for working C compiler: C:/Users/u18194/Desktop/MinGw/MinGW/bin/gcc.exe
--- Check for working C compiler: C:/Users/u18194/Desktop/MinGw/MinGW/bin/gcc.exe -- works
--- Detecting C compiler ABI info
--- Detecting C compiler ABI info - done
--- Detecting C compile features
--- Detecting C compile features - done
--- Configuring done
--- Generating done
-CMake Warning:
-  Manually-specified variables were not used by the project:
+C:\Users\u18189\Desktop\C-Lion\bin\cmake\win\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - NMake Makefiles" C:\Users\u18189\Documents\GitHub\Compactador\Compactador
+-- The C compiler identification is MSVC 19.12.25830.2
+-- Check for working C compiler: C:/Program Files (x86)/Microsoft Visual Studio/2017/Enterprise/VC/Tools/MSVC/14.12.25827/bin/Hostx86/x86/cl.exe
+-- Check for working C compiler: C:/Program Files (x86)/Microsoft Visual Studio/2017/Enterprise/VC/Tools/MSVC/14.12.25827/bin/Hostx86/x86/cl.exe -- broken
+CMake Error at C:/Users/u18189/Desktop/C-Lion/bin/cmake/win/share/cmake-3.14/Modules/CMakeTestCCompiler.cmake:60 (message):
+  The C compiler
 
-    CMAKE_CXX_COMPILER
+    "C:/Program Files (x86)/Microsoft Visual Studio/2017/Enterprise/VC/Tools/MSVC/14.12.25827/bin/Hostx86/x86/cl.exe"
+
+  is not able to compile a simple test program.
+
+  It fails with the following output:
+
+    Change Dir: C:/Users/u18189/Documents/GitHub/Compactador/Compactador/cmake-build-debug/CMakeFiles/CMakeTmp
+    
+    Run Build Command(s):nmake /nologo cmTC_77b0c\fast 
+    	"C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Tools\MSVC\14.12.25827\bin\HostX86\x86\nmake.exe" -f CMakeFiles\cmTC_77b0c.dir\build.make /nologo -L                  CMakeFiles\cmTC_77b0c.dir\build
+    Building C object CMakeFiles/cmTC_77b0c.dir/testCCompiler.c.obj
+    	C:\PROGRA~2\MIB055~1\2017\ENTERP~1\VC\Tools\MSVC\1412~1.258\bin\Hostx86\x86\cl.exe @C:\Users\u18189\AppData\Local\Temp\nm6452.tmp
+    testCCompiler.c
+    Linking C executable cmTC_77b0c.exe
+    	C:\Users\u18189\Desktop\C-Lion\bin\cmake\win\bin\cmake.exe -E vs_link_exe --intdir=CMakeFiles\cmTC_77b0c.dir --rc=rc --mt=CMAKE_MT-NOTFOUND --manifests  -- C:\PROGRA~2\MIB055~1\2017\ENTERP~1\VC\Tools\MSVC\1412~1.258\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_77b0c.dir\objects1.rsp @C:\Users\u18189\AppData\Local\Temp\nm65E8.tmp
+    RC Pass 1: command "rc /foCMakeFiles\cmTC_77b0c.dir/manifest.res CMakeFiles\cmTC_77b0c.dir/manifest.rc" failed (exit code 0) with the following output:
+    O sistema nÃ£o pode encontrar o arquivo especificadoNMAKE : fatal error U1077: 'C:\Users\u18189\Desktop\C-Lion\bin\cmake\win\bin\cmake.exe' : cÂ¾digo de retorno '0xffffffff'
+    Stop.
+    NMAKE : fatal error U1077: '"C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Tools\MSVC\14.12.25827\bin\HostX86\x86\nmake.exe"' : cÂ¾digo de retorno '0x2'
+    Stop.
+    
+
+  
+
+  CMake will not be able to correctly generate this project.
+Call Stack (most recent call first):
+  CMakeLists.txt:2 (project)
 
 
--- Build files have been written to: C:/Users/u18194/Documents/GitHub/Compactador/Compactador/cmake-build-debug
+-- Configuring incomplete, errors occurred!
+See also "C:/Users/u18189/Documents/GitHub/Compactador/Compactador/cmake-build-debug/CMakeFiles/CMakeOutput.log".
+See also "C:/Users/u18189/Documents/GitHub/Compactador/Compactador/cmake-build-debug/CMakeFiles/CMakeError.log".
