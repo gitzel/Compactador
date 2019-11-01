@@ -15,6 +15,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Compactador.c" beforeDir="false" afterPath="$PROJECT_DIR$/Compactador.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Compactador.h" beforeDir="false" afterPath="$PROJECT_DIR$/Compactador.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -83,6 +84,8 @@
       <workItem from="1572430710046" duration="1308000" />
       <workItem from="1572441425253" duration="6058000" />
       <workItem from="1572525534252" duration="1348000" />
+      <workItem from="1572608171349" duration="5363000" />
+      <workItem from="1572615187098" duration="1624000" />
     </task>
     <servers />
   </component>
@@ -103,9 +106,23 @@
     </option>
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/main.c</url>
+          <line>18</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/main.c</url>
+          <line>35</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <watches-manager>
       <configuration name="CMakeRunConfiguration">
-        <watch expression="7 - *qtd + i" />
+        <watch expression="7 - (qtdAtual + j)" />
       </configuration>
     </watches-manager>
   </component>

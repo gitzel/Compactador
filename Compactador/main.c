@@ -12,7 +12,7 @@ void Descompactar() {
     FILE *saida = fopen("C:/temp/descompactado.txt", "wb");
 
     FILE *entrada;
-    entrada = fopen("C:/temp/teste.txt", "rb");
+    entrada = fopen("C:/temp/teste.ig", "rb");
     char c;
 
     inteiro quantosLixos;
@@ -29,13 +29,12 @@ void Descompactar() {
         fread(&c, sizeof(char), 1, entrada);
         fread(&freq, sizeof(inteiro), 1, entrada);
         inserirCompactado(&fila, c, freq);
-
     }
 
     ordenar(&fila);
     converterEmArvore(&fila);
     Compactador descompactador;
-    inicieCompactador(&descompactador, &fila.vetor[0], saida);
+    inicieCompactador(&descompactador, &fila.vetor[0]);
     descompactarArquivo(&descompactador, entrada,saida);
     fclose(entrada);
     fclose(saida);
@@ -68,8 +67,8 @@ void Compactar()
     fclose(arq);
 
     No raiz = getRaiz(&fila);
-    inicieCompactador(&comp, &raiz, arq);
-    arq = fopen("C:/temp/teste.txt", "wb");
+    inicieCompactador(&comp, &raiz);
+    arq = fopen("C:/temp/teste.ig", "wb");
     compactarArquivo(&comp, arq);
     fclose(arq);
     encerrar(&fila);

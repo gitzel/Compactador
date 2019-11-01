@@ -24,9 +24,11 @@ void percorrer(Compactador *compactador, No *atual,  char *codigo, int qtd){
             compactador->codigo[compactador->qtd].freq = atual->frequencia; //o codigo que a gente não sabe;
             compactador->codigo[compactador->qtd].qual = atual->caracter;//o codigo que a gente não sabe;
             compactador->codigo[compactador->qtd].quantosBits = qtd;
-            compactador->codigo[compactador->qtd].byte = codigo;
+            compactador->codigo[compactador->qtd].byte = (char*) malloc(sizeof(char) * qtd);
+            int i;
+            for(i = 0; i < qtd; i++)
+                compactador->codigo[compactador->qtd].byte[i] = codigo[i];
             compactador->qtd++;
-            printf("char = %c freq = %d codigo = %s\n",atual->caracter,atual->frequencia, codigo);
         }
         if(atual->dir != NULL) {
             codigo[qtd] = '1';
@@ -60,11 +62,16 @@ boolean ehFolha(No* no){
 void compactarArquivo(Compactador *compactador, FILE *arq)
 {
     inteiro i;
-    inteiro qtd = compactador->qtd;
-    inteiro quantosBits = 0;
+    inteiro qtd;
+    inteiro qtdAtual = 0;
     char *aux;
-    aux = (char*) malloc(sizeof(char) * 8);
-    char byte;
+    aux = (char*) malloc(sizeof(char) * altura(compactador->raiz));
+    char saida = 0;
+
+    percorrer(compactador, compactador->raiz, aux, 0);
+    free(aux);
+
+    qtd = compactador->qtd;
 
     fwrite(&qtd, sizeof(inteiro), 1, arq);
     fwrite(&qtd, sizeof(inteiro), 1, arq);
@@ -84,41 +91,55 @@ void compactarArquivo(Compactador *compactador, FILE *arq)
         int j;
         int difPra8 = 0;
 
-        if(bits + quantosBits > 8)
+        if(bits + qtdAtual > 8)
             difPra8 = bits - 8;
 
 
         for(j = 0; j < bits - difPra8; j++)
         {
             if(codigo.byte[j] == '1')
-                byte|= (1u << (7 - (quantosBits + j)));
+                saida|= (1u << (7 - (qtdAtual + j)));
         }
 
-        quantosBits += bits;
+        qtdAtual += bits;
 
-        if(quantosBits >= 8) {
-            fwrite(byte, sizeof(char), 1, arq);
+        if(qtdAtual >= 8) {
+            fwrite(&saida, sizeof(char), 1, arq);
             fflush(arq);
-            if (quantosBits == 8)
-                quantosBits = 0;
+            saida = 0;
+            if (qtdAtual == 8)
+                qtdAtual = 0;
             else
             {
-                for(j = 0; j < difPra8; j++)
-                    byte[j] = codigo.codigo[7 + j];
-                quantosBits = difPra8;
+                for(j = 0; j < difPra8; j++) {
+                    if (codigo.byte[7 + j] == '1')
+                        saida |= (1u << (7 - (qtdAtual + j)));
+
+                    if(j == 7)
+                    {
+                        fwrite(&saida, sizeof(char), 1, arq);
+                        fflush(arq);
+                        saida = 0;
+                        difPra8 -= 8;
+                        j = 0;
+                    }
+                }
+
+                qtdAtual = difPra8;
+
             }
         }
     }
 
-    int quantosLixos = 0;
-    if(quantosBits != 0) {
-        quantosBits = 8 - quantosBits;
-        fwrite(byte, sizeof(char), 8, arq);
+    inteiro quantosLixos = 0;
+    if(qtdAtual != 0) {
+        quantosLixos = 8 - qtdAtual;
+        fwrite(&saida, sizeof(char), 1, arq);
         fflush(arq);
     }
 
     fseek(arq, 0, SEEK_SET);
-    fwrite(&quantosLixos, sizeof(int), 1, arq);
+    fwrite(&quantosLixos, sizeof(inteiro), 1, arq);
     fflush(arq);
 }
 
@@ -136,20 +157,16 @@ void descompactarArquivo(Compactador *compactador, FILE *entrada,FILE *arq) {
         {
             if(atual->esq == NULL && atual->dir == NULL)
             {
-                //achou char
+
             }
             else
             if(byte & (1 << (7 - i)))
             {
+                atual = anterior;
                 if(atual->esq != NULL)
-                {
-                    anterior = atual;
                     atual = atual->esq;
-                }
                 else
-                {
-                    atual = anterior;
-                }
+                    atual = atual->dir;
             }
             else
             {
@@ -159,4 +176,36 @@ void descompactarArquivo(Compactador *compactador, FILE *entrada,FILE *arq) {
         }
         // para cada bit, ver se é 0(esq) ou 1(dir); é folha? achou o char e escreve freq vezes
     }
+}
+
+
+void print(char bits)
+{
+    /*
+    Sabendo que o parametro chamado "bits" tem 32 bits nesta ordem:
+    31 30 29 28 27 26 25 24 23 22 21 20 19 18 17 16 15 14 13 12 11 10 09 08 07 06 05 04 03 02 01 00
+    escreva na tela os 0s e 1s que formam o parametro
+    */
+
+    for(int c = 7; c >= 0; c--)
+        printf("%d", ((((bits >> c) & 1u)? 1: 0)));
+
+    printf("\n");
+}
+
+inteiro altura(No *noAtual)
+{
+    inteiro alturaEsquerda,
+            alturaDireita;
+
+    if (noAtual == NULL)
+        return 0;
+
+    alturaEsquerda = altura(noAtual->esq);
+    alturaDireita  = altura(noAtual->dir);
+
+    if (alturaEsquerda >= alturaDireita)
+        return 1 + alturaEsquerda;
+
+    return 1 + alturaDireita;
 }

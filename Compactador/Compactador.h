@@ -30,4 +30,7 @@ void percorrer(Compactador *compactador, No *atual, char *codigo, inteiro qtd);
 extern void compactarArquivo(Compactador *compactador, FILE *arq);
 extern void descompactarArquivo(Compactador *compactador, FILE *entrada, FILE *saida);
 boolean ehFolha(No *no);
+inteiro altura(No *atual);
+extern void print(char c);
+
 #endif //COMPACTADOR_COMPACTADOR_H
