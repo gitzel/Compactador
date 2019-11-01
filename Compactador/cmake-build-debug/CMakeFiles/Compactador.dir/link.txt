@@ -1,3 +1,0 @@
-"C:\Users\u18194\AppData\Local\JetBrains\CLion 2019.2\bin\cmake\win\bin\cmake.exe" -E remove -f CMakeFiles\Compactador.dir/objects.a
-C:\Users\u18194\Desktop\MinGw\MinGW\bin\ar.exe cr CMakeFiles\Compactador.dir/objects.a @CMakeFiles\Compactador.dir\objects1.rsp
-C:\Users\u18194\Desktop\MinGw\MinGW\bin\gcc.exe -g   -Wl,--whole-archive CMakeFiles\Compactador.dir/objects.a -Wl,--no-whole-archive  -o Compactador.exe -Wl,--out-implib,libCompactador.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\Compactador.dir\linklibs.rsp

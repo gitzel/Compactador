@@ -14,21 +14,23 @@ void inicieCompactador(Compactador *compactador, No *inicio){
     compactador->codigo = (Codigo*) malloc(tamanhoCodigo * sizeof(Codigo));
 }
 
-void percorrer(Compactador *compactador, No *atual,  char *codigo, int qtd){
+void percorrer(Compactador *compactador, No *atual,  char *codigo, int qtd, FILE *arq){
     if(atual != NULL){
         if(atual->esq != NULL) {
             codigo[qtd] = '0';
             percorrer(compactador, atual->esq, codigo, qtd + 1);
         }
         if(atual->esq == NULL && atual->dir == NULL){
-            compactador->codigo[compactador->qtd].freq = atual->frequencia; //o codigo que a gente não sabe;
-            compactador->codigo[compactador->qtd].qual = atual->caracter;//o codigo que a gente não sabe;
-            compactador->codigo[compactador->qtd].quantosBits = qtd;
-            compactador->codigo[compactador->qtd].byte = (char*) malloc(sizeof(char) * qtd);
+            compactador->codigo[atual->caracter].freq = atual->frequencia; //o codigo que a gente não sabe;
+            compactador->codigo[atual->caracter].qual = atual->caracter;//o codigo que a gente não sabe;
+            compactador->codigo[atual->caracter].quantosBits = qtd;
+            compactador->codigo[atual->caracter].byte = (char*) malloc(sizeof(char) * qtd);
             int i;
             for(i = 0; i < qtd; i++)
-                compactador->codigo[compactador->qtd].byte[i] = codigo[i];
+                compactador->codigo[atual->caracter].byte[i] = codigo[i];
             compactador->qtd++;
+            fwrite(&atual->caracter, sizeof(char), 1, arq);
+            fwrite(&atual->frequencia, sizeof(inteiro), 1, arq);
         }
         if(atual->dir != NULL) {
             codigo[qtd] = '1';
@@ -59,33 +61,26 @@ boolean ehFolha(No* no){
      return false;
 }
 
-void compactarArquivo(Compactador *compactador, FILE *arq)
+void compactarArquivo(Compactador *compactador, FILE *arq, FILE *entrada)
 {
     inteiro i;
     inteiro qtd;
     inteiro qtdAtual = 0;
     char *aux;
+    char c;
     aux = (char*) malloc(sizeof(char) * altura(compactador->raiz));
     char saida = 0;
 
-    percorrer(compactador, compactador->raiz, aux, 0);
+    fwrite(&qtdAtual, sizeof(inteiro), 1, arq);
+    fwrite(&qtdAtual, sizeof(inteiro), 1, arq);
+
+    percorrer(compactador, compactador->raiz, aux, 0, arq);
     free(aux);
 
     qtd = compactador->qtd;
 
-    fwrite(&qtd, sizeof(inteiro), 1, arq);
-    fwrite(&qtd, sizeof(inteiro), 1, arq);
-
-    for(i = 0; i < qtd; i++)
-    {
-        Codigo codigo = compactador->codigo[i];
-        fwrite(&codigo.qual, sizeof(char), 1, arq);
-        fwrite(&codigo.freq, sizeof(inteiro), 1, arq);
-    }
-
-    for(i = 0; i < qtd; i++)
-    {
-        Codigo codigo = compactador->codigo[i];
+    while((c = fgetc(entrada)) != EOF){
+        Codigo codigo = compactador->codigo[c];
         int bits = codigo.quantosBits;
 
         int j;
@@ -126,7 +121,6 @@ void compactarArquivo(Compactador *compactador, FILE *arq)
                 }
 
                 qtdAtual = difPra8;
-
             }
         }
     }
@@ -140,6 +134,7 @@ void compactarArquivo(Compactador *compactador, FILE *arq)
 
     fseek(arq, 0, SEEK_SET);
     fwrite(&quantosLixos, sizeof(inteiro), 1, arq);
+    fwrite(&qtd, sizeof(inteiro), 1, arq);
     fflush(arq);
 }
 

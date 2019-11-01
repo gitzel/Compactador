@@ -69,7 +69,7 @@ void Compactar()
     No raiz = getRaiz(&fila);
     inicieCompactador(&comp, &raiz);
     arq = fopen("C:/temp/teste.ig", "wb");
-    compactarArquivo(&comp, arq);
+    compactarArquivo(&comp, arq, fopen(caminho, "r"));
     fclose(arq);
     encerrar(&fila);
 }
