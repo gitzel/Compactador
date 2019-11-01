@@ -13,9 +13,6 @@
   <component name="ChangeListManager">
     <list default="true" id="943c688d-3c72-4025-9f6b-bab97af44b65" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Compactador.c" beforeDir="false" afterPath="$PROJECT_DIR$/Compactador.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Compactador.h" beforeDir="false" afterPath="$PROJECT_DIR$/Compactador.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -37,7 +34,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.general" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -86,6 +83,7 @@
       <workItem from="1572525534252" duration="1348000" />
       <workItem from="1572608171349" duration="5363000" />
       <workItem from="1572615187098" duration="1624000" />
+      <workItem from="1572617996470" duration="1010000" />
     </task>
     <servers />
   </component>
