@@ -18,11 +18,9 @@ void percorrer(Compactador *compactador, No *atual,  char *codigo, int qtd, FILE
     if(atual != NULL){
         if(atual->esq != NULL) {
             codigo[qtd] = '0';
-            percorrer(compactador, atual->esq, codigo, qtd + 1);
+            percorrer(compactador, atual->esq, codigo, qtd + 1,arq);
         }
         if(atual->esq == NULL && atual->dir == NULL){
-            compactador->codigo[atual->caracter].freq = atual->frequencia; //o codigo que a gente não sabe;
-            compactador->codigo[atual->caracter].qual = atual->caracter;//o codigo que a gente não sabe;
             compactador->codigo[atual->caracter].quantosBits = qtd;
             compactador->codigo[atual->caracter].byte = (char*) malloc(sizeof(char) * qtd);
             int i;
@@ -34,7 +32,7 @@ void percorrer(Compactador *compactador, No *atual,  char *codigo, int qtd, FILE
         }
         if(atual->dir != NULL) {
             codigo[qtd] = '1';
-            percorrer(compactador, atual->dir, codigo, qtd + 1);
+            percorrer(compactador, atual->dir, codigo, qtd + 1, arq);
         }
     }
 }
@@ -63,13 +61,12 @@ boolean ehFolha(No* no){
 
 void compactarArquivo(Compactador *compactador, FILE *arq, FILE *entrada)
 {
-    inteiro i;
     inteiro qtd;
     inteiro qtdAtual = 0;
     char *aux;
     char c;
-    aux = (char*) malloc(sizeof(char) * altura(compactador->raiz));
     char saida = 0;
+    aux = (char*) malloc(sizeof(char) * altura(compactador->raiz));
 
     fwrite(&qtdAtual, sizeof(inteiro), 1, arq);
     fwrite(&qtdAtual, sizeof(inteiro), 1, arq);
@@ -87,10 +84,9 @@ void compactarArquivo(Compactador *compactador, FILE *arq, FILE *entrada)
         int difPra8 = 0;
 
         if(bits + qtdAtual > 8)
-            difPra8 = bits - 8;
+            difPra8 = qtdAtual + bits - 8;
 
-
-        for(j = 0; j < bits - difPra8; j++)
+        for(j = 0; j < (bits-difPra8>0?bits - difPra8:difPra8-bits); j++)
         {
             if(codigo.byte[j] == '1')
                 saida|= (1u << (7 - (qtdAtual + j)));

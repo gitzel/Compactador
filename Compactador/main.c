@@ -68,7 +68,7 @@ void Compactar()
 
     No raiz = getRaiz(&fila);
     inicieCompactador(&comp, &raiz);
-    arq = fopen("C:/temp/teste.ig", "wb");
+    arq = fopen("C:/temp/teste.txt", "wb");
     compactarArquivo(&comp, arq, fopen(caminho, "r"));
     fclose(arq);
     encerrar(&fila);

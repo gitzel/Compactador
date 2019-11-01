@@ -10,8 +10,6 @@
 
 typedef struct {
     inteiro quantosBits;
-    inteiro  freq;
-    char qual;
     char *byte;
 }Codigo;
 
@@ -26,8 +24,8 @@ static inteiro tamanhoCodigo;
 extern void inicieCompactador(Compactador *compactador, No *inicio);
 extern inteiro qtdFolhas(Compactador *compactador);
 inteiro quantasFolhas(No *atual);
-void percorrer(Compactador *compactador, No *atual, char *codigo, inteiro qtd);
-extern void compactarArquivo(Compactador *compactador, FILE *arq);
+void percorrer(Compactador *compactador, No *atual, char *codigo, inteiro qtd, FILE *arq);
+extern void compactarArquivo(Compactador *compactador, FILE *arq, FILE *entrada);
 extern void descompactarArquivo(Compactador *compactador, FILE *entrada, FILE *saida);
 boolean ehFolha(No *no);
 inteiro altura(No *atual);
