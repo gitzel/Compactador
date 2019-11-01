@@ -149,6 +149,33 @@ Compactador.c.s:
 	$(MAKE) -f CMakeFiles\Compactador.dir\build.make CMakeFiles/Compactador.dir/Compactador.c.s
 .PHONY : Compactador.c.s
 
+Descompactador.obj: Descompactador.c.obj
+
+.PHONY : Descompactador.obj
+
+# target to build an object file
+Descompactador.c.obj:
+	$(MAKE) -f CMakeFiles\Compactador.dir\build.make CMakeFiles/Compactador.dir/Descompactador.c.obj
+.PHONY : Descompactador.c.obj
+
+Descompactador.i: Descompactador.c.i
+
+.PHONY : Descompactador.i
+
+# target to preprocess a source file
+Descompactador.c.i:
+	$(MAKE) -f CMakeFiles\Compactador.dir\build.make CMakeFiles/Compactador.dir/Descompactador.c.i
+.PHONY : Descompactador.c.i
+
+Descompactador.s: Descompactador.c.s
+
+.PHONY : Descompactador.s
+
+# target to generate assembly for a file
+Descompactador.c.s:
+	$(MAKE) -f CMakeFiles\Compactador.dir\build.make CMakeFiles/Compactador.dir/Descompactador.c.s
+.PHONY : Descompactador.c.s
+
 FilaPrioridade.obj: FilaPrioridade.c.obj
 
 .PHONY : FilaPrioridade.obj
@@ -215,6 +242,9 @@ help:
 	@echo ... Compactador.obj
 	@echo ... Compactador.i
 	@echo ... Compactador.s
+	@echo ... Descompactador.obj
+	@echo ... Descompactador.i
+	@echo ... Descompactador.s
 	@echo ... FilaPrioridade.obj
 	@echo ... FilaPrioridade.i
 	@echo ... FilaPrioridade.s

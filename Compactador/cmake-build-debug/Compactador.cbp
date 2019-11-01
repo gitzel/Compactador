@@ -82,6 +82,12 @@
 		<Unit filename="C:/Users/u18194/Documents/GitHub/Compactador/Compactador/Compactador.h">
 			<Option target="Compactador"/>
 		</Unit>
+		<Unit filename="C:/Users/u18194/Documents/GitHub/Compactador/Compactador/Descompactador.c">
+			<Option target="Compactador"/>
+		</Unit>
+		<Unit filename="C:/Users/u18194/Documents/GitHub/Compactador/Compactador/Descompactador.h">
+			<Option target="Compactador"/>
+		</Unit>
 		<Unit filename="C:/Users/u18194/Documents/GitHub/Compactador/Compactador/FilaPrioridade.c">
 			<Option target="Compactador"/>
 		</Unit>

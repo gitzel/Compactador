@@ -3,9 +3,10 @@
 
 #include "FilaPrioridade.h"
 #include "Compactador.h"
+#include "Descompactador.h"
 
 void Descompactar() {
-
+    inteiro i;
     FilaPrioridade fila;
     inicieFila(&fila, 255);
 
@@ -13,19 +14,16 @@ void Descompactar() {
 
     FILE *entrada;
     entrada = fopen("C:/temp/teste.ig", "rb");
-    char c;
 
-    inteiro quantosLixos;
-    fread(&quantosLixos, sizeof(inteiro), 1, entrada);
+    Descompactador descompactador;
+    setLixo(&descompactador, entrada);
 
     inteiro qtd;
     fread(&qtd, sizeof(inteiro), 1, entrada);
 
-
-    inteiro i;
     for(i = 0; i < qtd; i++){
+        char c;
         inteiro freq;
-        inteiro quantosBits;
         fread(&c, sizeof(char), 1, entrada);
         fread(&freq, sizeof(inteiro), 1, entrada);
         inserirCompactado(&fila, c, freq);
@@ -33,8 +31,8 @@ void Descompactar() {
 
     ordenar(&fila);
     converterEmArvore(&fila);
-    Compactador descompactador;
-    inicieCompactador(&descompactador, &fila.vetor[0]);
+    No raiz = getRaiz(&fila);
+    inicieDescompactador(&descompactador, &raiz);
     descompactarArquivo(&descompactador, entrada,saida);
     fclose(entrada);
     fclose(saida);
@@ -65,10 +63,9 @@ void Compactar()
     converterEmArvore(&fila);
 
     fclose(arq);
-
     No raiz = getRaiz(&fila);
     inicieCompactador(&comp, &raiz);
-    arq = fopen("C:/temp/teste.txt", "wb");
+    arq = fopen("C:/temp/teste.ig", "wb");
     compactarArquivo(&comp, arq, fopen(caminho, "r"));
     fclose(arq);
     encerrar(&fila);

@@ -8,10 +8,9 @@
 
 
 void inicieCompactador(Compactador *compactador, No *inicio){
-    tamanhoCodigo =quantasFolhas(inicio);
     compactador->raiz = inicio;
     compactador->qtd = 0;
-    compactador->codigo = (Codigo*) malloc(tamanhoCodigo * sizeof(Codigo));
+    compactador->codigo = (Codigo*) malloc(255 * sizeof(Codigo));
 }
 
 void percorrer(Compactador *compactador, No *atual,  char *codigo, int qtd, FILE *arq){
@@ -132,41 +131,6 @@ void compactarArquivo(Compactador *compactador, FILE *arq, FILE *entrada)
     fwrite(&quantosLixos, sizeof(inteiro), 1, arq);
     fwrite(&qtd, sizeof(inteiro), 1, arq);
     fflush(arq);
-}
-
-
-
-void descompactarArquivo(Compactador *compactador, FILE *entrada,FILE *arq) {
-    No *anterior = NULL;
-    No *atual = compactador->raiz;
-    while(!feof(entrada))
-    {
-        char byte;
-        fread(&byte, sizeof(char), 1, entrada);
-        inteiro i;
-        for(i = 0; i < 8; i++)
-        {
-            if(atual->esq == NULL && atual->dir == NULL)
-            {
-
-            }
-            else
-            if(byte & (1 << (7 - i)))
-            {
-                atual = anterior;
-                if(atual->esq != NULL)
-                    atual = atual->esq;
-                else
-                    atual = atual->dir;
-            }
-            else
-            {
-                // é 0
-            }
-
-        }
-        // para cada bit, ver se é 0(esq) ou 1(dir); é folha? achou o char e escreve freq vezes
-    }
 }
 
 
