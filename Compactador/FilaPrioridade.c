@@ -36,6 +36,14 @@ void inserirCompactado(FilaPrioridade *fila, char caracter, inteiro frequencia)
     fila->qtd++;
 }
 
+void printarFila(FilaPrioridade *fila, FILE *arq) {
+    for(int i = 0; i < fila->qtd; i++)
+    {
+        fwrite(&fila->vetor[i].caracter, sizeof(char), 1, arq);
+        fwrite(&fila->vetor[i].frequencia, sizeof(inteiro), 1, arq);
+    }
+}
+
 void ordenar(FilaPrioridade *fila){
     inteiro min, outer, inner;
     No temp;
@@ -89,11 +97,13 @@ void converterEmArvore(FilaPrioridade *fila){
         No novoNo;
         boolean alocou = false;
         novoNo.frequencia = fila->vetor[0].frequencia + fila->vetor[1].frequencia;
+
         novoNo.esq = (No*) malloc(sizeof(No));
         novoNo.esq->caracter = fila->vetor[0].caracter;
         novoNo.esq->frequencia = fila->vetor[0].frequencia;
         novoNo.esq->esq = fila->vetor[0].esq;
         novoNo.esq->dir = fila->vetor[0].dir;
+
         novoNo.dir = (No*) malloc(sizeof(No));
         novoNo.dir->caracter = fila->vetor[1].caracter;
         novoNo.dir->frequencia = fila->vetor[1].frequencia;
@@ -117,7 +127,6 @@ void converterEmArvore(FilaPrioridade *fila){
                 fila->vetor[j] = fila->vetor[j+1];
             else
                 fila->vetor[j] = fila->vetor[j+2];
-
         }
         fila->qtd--;
     }

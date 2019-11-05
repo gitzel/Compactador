@@ -4,6 +4,8 @@
 
 #ifndef COMPACTADOR_FILAPRIORIDADE_H
 #define COMPACTADOR_FILAPRIORIDADE_H
+
+#include <stdio.h>
 #include "Struct.h"
 
 typedef struct {
@@ -16,7 +18,8 @@ extern void inserir(FilaPrioridade *fila, char caracter);
 extern void inserirCompactado(FilaPrioridade *fila, char caracter, inteiro freq);
 extern inteiro existe(FilaPrioridade *fila, char caracter);
 extern void aumentarFrequencia(FilaPrioridade *fila, inteiro posicao);
-extern void encerrar();
+extern void encerrar(FilaPrioridade *fila);
+extern void printarFila(FilaPrioridade *, FILE *arq);
 extern void ordenar(FilaPrioridade *fila);
 extern char get(FilaPrioridade *fila, inteiro posicao);
 extern No getRaiz(FilaPrioridade *fila);

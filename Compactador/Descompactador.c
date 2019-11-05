@@ -26,11 +26,15 @@ void descompactarArquivo(Descompactador *descompactador, FILE *entrada,FILE *sai
     No *atual = descompactador->raiz;
     inteiro i;
     inteiro max = 8;
-    char byte;
+    unsigned char byte;
+
     long posOriginal = ftell(entrada);
-    fseek(entrada,  0, SEEK_END - 1);
+
+    fseek(entrada,  -1, SEEK_END);      // file, distancia, origem
+
     long  posFinal = ftell(entrada);
-    fseek(entrada, posOriginal, SEEK_CUR);
+
+    fseek(entrada, posOriginal - posFinal, SEEK_CUR);
 
     while(!feof(entrada))
     {
@@ -41,7 +45,7 @@ void descompactarArquivo(Descompactador *descompactador, FILE *entrada,FILE *sai
 
         for(i = 0; i < max; i++)
         {
-            if (byte & (1 << (7 - i)))
+            if (byte & (1u << (7 - i)))
                 atual = atual->dir;
             else
                 atual = atual->esq;

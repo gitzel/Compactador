@@ -1,27 +1,44 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "FilaPrioridade.h"
 #include "Compactador.h"
 #include "Descompactador.h"
 
+
+void Percorrer(No *atual){
+    if(atual != NULL){
+        Percorrer(atual->esq);
+        printf("%c\n", atual->caracter);
+        Percorrer(atual->dir);
+    }
+}
+
 void Descompactar() {
-    inteiro i;
+    inteiro i, qtd, j;
+
     FilaPrioridade fila;
+    Descompactador descompactador;
+
+    char caminho[100], extensao[5], novoArquivo[100];
+
+    FILE *saida, *entrada;
+
+    printf("Digite o caminho do arquivo: ");
+    scanf("%s", caminho);
+
+    entrada = fopen(caminho, "rb");
+
     inicieFila(&fila, 255);
 
-    FILE *saida = fopen("C:/temp/descompactado.txt", "wb");
-
-    FILE *entrada;
-    entrada = fopen("C:/temp/teste.ig", "rb");
-
-    Descompactador descompactador;
     setLixo(&descompactador, entrada);
 
-    inteiro qtd;
     fread(&qtd, sizeof(inteiro), 1, entrada);
 
-    for(i = 0; i < qtd; i++){
+    fread(&extensao, sizeof(char), 5, entrada);
+
+    for(i = 0; i < qtd; i++) {
         char c;
         inteiro freq;
         fread(&c, sizeof(char), 1, entrada);
@@ -29,7 +46,17 @@ void Descompactar() {
         inserirCompactado(&fila, c, freq);
     }
 
-    ordenar(&fila);
+    for(i =0; i < strlen(caminho); i++){
+        novoArquivo[i] = caminho[i];
+        if(caminho[i] == '.')
+        {
+            for(i = i+1, j = 0; i<strlen(caminho); i++)
+                novoArquivo[i] = extensao[j];
+        }
+    }
+
+    saida = fopen(novoArquivo, "wb");
+
     converterEmArvore(&fila);
     No raiz = getRaiz(&fila);
     inicieDescompactador(&descompactador, &raiz);
@@ -39,38 +66,53 @@ void Descompactar() {
 }
 
 
-void Compactar()
-{
-    Compactador comp;
+void Compactar(){
+    inteiro i, j;
+    FILE *arq;
+    Compactador compactador;
     FilaPrioridade fila;
-    char c;
-    char caminho[100];
+    char c, caminho[100], extensao[5], novoArquivo[100];
 
     printf("Digite o caminho do arquivo: ");
-
     scanf("%s", caminho);
 
-    FILE *arq;
-    arq = fopen(caminho, "r");
+    for(i =0; i < strlen(caminho); i++){
+        novoArquivo[i] = caminho[i];
+        if(caminho[i] == '.')
+        {
+            novoArquivo[i] = '.';
+            novoArquivo[i+1] = 'i';
+            novoArquivo[i+2] = 'g';
+            for(j = 0; i<strlen(caminho); i++)
+                extensao[j] = caminho[i];
+        }
+    }
+
+    arq = fopen(caminho, "rb");
 
     inicieFila(&fila, 255);
 
     while((c = fgetc(arq)) != EOF)
         inserir(&fila, c);
 
+    fclose(arq);
+
+    arq = fopen(novoArquivo, "wb");
+
     ordenar(&fila);
+    fwrite(&fila.qtd, sizeof(inteiro), 1, arq);
+    fwrite(&fila.qtd, sizeof(inteiro), 1, arq);
+    fwrite(&extensao, sizeof(char), 5, arq);
+
+    printarFila(&fila, arq);
 
     converterEmArvore(&fila);
-
-    fclose(arq);
     No raiz = getRaiz(&fila);
-    inicieCompactador(&comp, &raiz);
-    arq = fopen("C:/temp/teste.ig", "wb");
-    compactarArquivo(&comp, arq, fopen(caminho, "r"));
+    inicieCompactador(&compactador, &raiz);
+    compactarArquivo(&compactador, arq, fopen(caminho, "rb"));
     fclose(arq);
     encerrar(&fila);
 }
-
 
 int main()
 {

@@ -12,16 +12,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="943c688d-3c72-4025-9f6b-bab97af44b65" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Descompactador.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Descompactador.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Compactador.c" beforeDir="false" afterPath="$PROJECT_DIR$/Compactador.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Compactador.h" beforeDir="false" afterPath="$PROJECT_DIR$/Compactador.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Compactador.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Compactador.cbp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Descompactador.c" beforeDir="false" afterPath="$PROJECT_DIR$/Descompactador.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FilaPrioridade.c" beforeDir="false" afterPath="$PROJECT_DIR$/FilaPrioridade.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FilaPrioridade.h" beforeDir="false" afterPath="$PROJECT_DIR$/FilaPrioridade.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -103,6 +98,12 @@
       <workItem from="1572623334805" duration="3930000" />
       <workItem from="1572627544445" duration="5939000" />
       <workItem from="1572643424806" duration="1967000" />
+      <workItem from="1572863968665" duration="1872000" />
+      <workItem from="1572869675239" duration="1541000" />
+      <workItem from="1572878740358" duration="594000" />
+      <workItem from="1572882234734" duration="2503000" />
+      <workItem from="1572902450633" duration="267000" />
+      <workItem from="1572953291457" duration="14191000" />
     </task>
     <servers />
   </component>
@@ -123,11 +124,14 @@
     </option>
   </component>
   <component name="XDebuggerManager">
-    <watches-manager>
-      <configuration name="CMakeRunConfiguration">
-        <watch expression="compactador-&gt;codigo[atual-&gt;caracter]" />
-        <watch expression="atual-&gt;caracter" language="ObjectiveC" />
-      </configuration>
-    </watches-manager>
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/main.c</url>
+          <line>48</line>
+          <option name="timeStamp" value="43" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

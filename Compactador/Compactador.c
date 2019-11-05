@@ -26,8 +26,6 @@ void percorrer(Compactador *compactador, No *atual,  char *codigo, int qtd, FILE
             for(i = 0; i < qtd; i++)
                 compactador->codigo[atual->caracter].byte[i] = codigo[i];
             compactador->qtd++;
-            fwrite(&atual->caracter, sizeof(char), 1, arq);
-            fwrite(&atual->frequencia, sizeof(inteiro), 1, arq);
         }
         if(atual->dir != NULL) {
             codigo[qtd] = '1';
@@ -64,11 +62,8 @@ void compactarArquivo(Compactador *compactador, FILE *arq, FILE *entrada)
     inteiro qtdAtual = 0;
     char *aux;
     char c;
-    char saida = 0;
+    unsigned char saida = 0;
     aux = (char*) malloc(sizeof(char) * altura(compactador->raiz));
-
-    fwrite(&qtdAtual, sizeof(inteiro), 1, arq);
-    fwrite(&qtdAtual, sizeof(inteiro), 1, arq);
 
     percorrer(compactador, compactador->raiz, aux, 0, arq);
     free(aux);
@@ -96,22 +91,23 @@ void compactarArquivo(Compactador *compactador, FILE *arq, FILE *entrada)
         if(qtdAtual >= 8) {
             fwrite(&saida, sizeof(char), 1, arq);
             fflush(arq);
-            saida = 0;
+             saida = 0;
             if (qtdAtual == 8)
                 qtdAtual = 0;
-            else
-            {
+            else{
+                qtdAtual = 0;
+                int inicioResto = codigo.quantosBits - difPra8;
                 for(j = 0; j < difPra8; j++) {
-                    if (codigo.byte[7 + j] == '1')
+                    if (codigo.byte[inicioResto + j] == '1')
                         saida |= (1u << (7 - (qtdAtual + j)));
-
                     if(j == 7)
                     {
                         fwrite(&saida, sizeof(char), 1, arq);
                         fflush(arq);
                         saida = 0;
                         difPra8 -= 8;
-                        j = 0;
+                        inicioResto = codigo.quantosBits - difPra8;
+                        j = -1;
                     }
                 }
 
