@@ -97,6 +97,12 @@
 		<Unit filename="C:/Users/u18194/Documents/GitHub/Compactador/Compactador/Struct.h">
 			<Option target="Compactador"/>
 		</Unit>
+		<Unit filename="C:/Users/u18194/Documents/GitHub/Compactador/Compactador/UserInterface.c">
+			<Option target="Compactador"/>
+		</Unit>
+		<Unit filename="C:/Users/u18194/Documents/GitHub/Compactador/Compactador/UserInterface.h">
+			<Option target="Compactador"/>
+		</Unit>
 		<Unit filename="C:/Users/u18194/Documents/GitHub/Compactador/Compactador/main.c">
 			<Option target="Compactador"/>
 		</Unit>

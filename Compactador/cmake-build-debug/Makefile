@@ -38,10 +38,10 @@ cmake_force:
 SHELL = cmd.exe
 
 # The CMake executable.
-CMAKE_COMMAND = "C:\Users\u18194\AppData\Local\JetBrains\CLion 2019.2\bin\cmake\win\bin\cmake.exe"
+CMAKE_COMMAND = C:\Clion\bin\cmake\win\bin\cmake.exe
 
 # The command to remove a file.
-RM = "C:\Users\u18194\AppData\Local\JetBrains\CLion 2019.2\bin\cmake\win\bin\cmake.exe" -E remove -f
+RM = C:\Clion\bin\cmake\win\bin\cmake.exe -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -58,7 +58,7 @@ CMAKE_BINARY_DIR = C:\Users\u18194\Documents\GitHub\Compactador\Compactador\cmak
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	"C:\Users\u18194\AppData\Local\JetBrains\CLion 2019.2\bin\cmake\win\bin\cmake.exe" -E echo "No interactive CMake dialog available."
+	C:\Clion\bin\cmake\win\bin\cmake.exe -E echo "No interactive CMake dialog available."
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -69,7 +69,7 @@ edit_cache/fast: edit_cache
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	"C:\Users\u18194\AppData\Local\JetBrains\CLion 2019.2\bin\cmake\win\bin\cmake.exe" -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	C:\Clion\bin\cmake\win\bin\cmake.exe -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -203,6 +203,33 @@ FilaPrioridade.c.s:
 	$(MAKE) -f CMakeFiles\Compactador.dir\build.make CMakeFiles/Compactador.dir/FilaPrioridade.c.s
 .PHONY : FilaPrioridade.c.s
 
+UserInterface.obj: UserInterface.c.obj
+
+.PHONY : UserInterface.obj
+
+# target to build an object file
+UserInterface.c.obj:
+	$(MAKE) -f CMakeFiles\Compactador.dir\build.make CMakeFiles/Compactador.dir/UserInterface.c.obj
+.PHONY : UserInterface.c.obj
+
+UserInterface.i: UserInterface.c.i
+
+.PHONY : UserInterface.i
+
+# target to preprocess a source file
+UserInterface.c.i:
+	$(MAKE) -f CMakeFiles\Compactador.dir\build.make CMakeFiles/Compactador.dir/UserInterface.c.i
+.PHONY : UserInterface.c.i
+
+UserInterface.s: UserInterface.c.s
+
+.PHONY : UserInterface.s
+
+# target to generate assembly for a file
+UserInterface.c.s:
+	$(MAKE) -f CMakeFiles\Compactador.dir\build.make CMakeFiles/Compactador.dir/UserInterface.c.s
+.PHONY : UserInterface.c.s
+
 main.obj: main.c.obj
 
 .PHONY : main.obj
@@ -248,6 +275,9 @@ help:
 	@echo ... FilaPrioridade.obj
 	@echo ... FilaPrioridade.i
 	@echo ... FilaPrioridade.s
+	@echo ... UserInterface.obj
+	@echo ... UserInterface.i
+	@echo ... UserInterface.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

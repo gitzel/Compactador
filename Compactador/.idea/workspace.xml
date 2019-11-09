@@ -12,11 +12,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="943c688d-3c72-4025-9f6b-bab97af44b65" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/UserInterface.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UserInterface.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Compactador.c" beforeDir="false" afterPath="$PROJECT_DIR$/Compactador.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Compactador.h" beforeDir="false" afterPath="$PROJECT_DIR$/Compactador.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Descompactador.c" beforeDir="false" afterPath="$PROJECT_DIR$/Descompactador.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Descompactador.h" beforeDir="false" afterPath="$PROJECT_DIR$/Descompactador.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FilaPrioridade.c" beforeDir="false" afterPath="$PROJECT_DIR$/FilaPrioridade.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FilaPrioridade.h" beforeDir="false" afterPath="$PROJECT_DIR$/FilaPrioridade.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Struct.h" beforeDir="false" afterPath="$PROJECT_DIR$/Struct.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Compactador.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Compactador.cbp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -32,6 +41,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
   <component name="ProjectId" id="1ShILvi8nnSFXhxFnEs2mEe2Kmg" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
@@ -104,6 +114,11 @@
       <workItem from="1572882234734" duration="2503000" />
       <workItem from="1572902450633" duration="267000" />
       <workItem from="1572953291457" duration="14191000" />
+      <workItem from="1573041059021" duration="7264000" />
+      <workItem from="1573053710353" duration="5300000" />
+      <workItem from="1573122519781" duration="4818000" />
+      <workItem from="1573208917619" duration="4153000" />
+      <workItem from="1573221802174" duration="16000" />
     </task>
     <servers />
   </component>
@@ -127,11 +142,23 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/main.c</url>
-          <line>48</line>
-          <option name="timeStamp" value="43" />
+          <url>file://$PROJECT_DIR$/UserInterface.h</url>
+          <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="CMakeRunConfiguration">
+        <watch expression="strtok(aux, extensao)" />
+        <watch expression="strtok(caminho, &quot;.&quot;)" language="ObjectiveC" />
+        <watch expression="strlen(extensao)" language="ObjectiveC" />
+        <watch expression="strcat(strtok(caminho, &quot;.&quot;), extensao)" />
+        <watch expression="strtok(caminho, &quot;ig&quot;)" language="ObjectiveC" />
+        <watch expression="strtok(caminho, &quot;ig&quot;)" />
+        <watch expression="extensao[i + 1]" />
+        <watch expression="extensao" />
+        <watch expression="extensao[i]" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

@@ -1,6 +1,10 @@
-//
-// Created by u18194 on 25/10/2019.
-//
+/*
+  * Implementação da biblioteca Fila de Prioridade que armazena os Nos, onde existe um char para guardar o caracter, uma
+  frequencia que guarda quantas vezes ele aparece e dois ponteiros de No que apontam para a esquerda e direita do No atual.
+  Possui métodos para incluir, ordenar com base na frequencia, escrever no arquivo, montar uma arvore com base nos nós e sua
+  frequência, além de métodos auxiliares ao processo.
+  * Autores: Isabela Paulino de Souza e Gustavo Ferreira Gitzel
+ */
 
 
 #include "FilaPrioridade.h"
@@ -8,7 +12,7 @@
 #include <stdlib.h>
 
 
-void inserir (FilaPrioridade *fila, char caracter)
+void inserir (FilaPrioridade *fila, unsigned char caracter)
 {
     inteiro posicao = existe(fila, caracter);
 
@@ -25,7 +29,7 @@ void inserir (FilaPrioridade *fila, char caracter)
         aumentarFrequencia(fila, posicao);
 }
 
-void inserirCompactado(FilaPrioridade *fila, char caracter, inteiro frequencia)
+void inserirCompactado(FilaPrioridade *fila,unsigned char caracter, inteiro frequencia)
 {
     No novoNo;
     novoNo.caracter = caracter;
@@ -39,7 +43,7 @@ void inserirCompactado(FilaPrioridade *fila, char caracter, inteiro frequencia)
 void printarFila(FilaPrioridade *fila, FILE *arq) {
     for(int i = 0; i < fila->qtd; i++)
     {
-        fwrite(&fila->vetor[i].caracter, sizeof(char), 1, arq);
+        fwrite(&fila->vetor[i].caracter, sizeof(unsigned char), 1, arq);
         fwrite(&fila->vetor[i].frequencia, sizeof(inteiro), 1, arq);
     }
 }
@@ -65,7 +69,7 @@ void ordenar(FilaPrioridade *fila){
     }
 }
 
-inteiro existe (FilaPrioridade *fila, char caracter)
+inteiro existe (FilaPrioridade *fila, unsigned char caracter)
 {
     inteiro i;
     for(i =0; i<fila->qtd; i++)

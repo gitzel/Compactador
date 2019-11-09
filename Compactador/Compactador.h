@@ -10,7 +10,7 @@
 
 typedef struct {
     inteiro quantosBits;
-    char *byte;
+    unsigned char *byte;
 }Codigo;
 
 typedef struct {
@@ -22,7 +22,7 @@ typedef struct {
 extern void inicieCompactador(Compactador *compactador, No *inicio);
 extern inteiro qtdFolhas(Compactador *compactador);
 inteiro quantasFolhas(No *atual);
-void percorrer(Compactador *compactador, No *atual, char *codigo, inteiro qtd, FILE *arq);
+void percorrer(Compactador *compactador, No *atual, unsigned char *codigo, inteiro qtd, FILE *arq);
 extern void compactarArquivo(Compactador *compactador, FILE *arq, FILE *entrada);
 boolean ehFolha(No *no);
 inteiro altura(No *atual);

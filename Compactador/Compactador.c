@@ -1,6 +1,9 @@
-//
-// Created by u18194 on 25/10/2019.
-//
+/*
+  *Implementação da biblioteca Compactador que armazena uma arvore, onde existem nós para descompactar um arquivo.
+  Possui métodos para pegar a quantidade de lixo armazenada no arquivo, e um método para percorrê-lo e descompactá-lo. Além
+  de métodos auxiliares como verificar se um nó é folha.
+  *Autores: Isabela Paulino de Souza e Gustavo Ferreira Gitzel
+*/
 
 #include "Compactador.h"
 #include <stdio.h>
@@ -13,7 +16,7 @@ void inicieCompactador(Compactador *compactador, No *inicio){
     compactador->codigo = (Codigo*) malloc(255 * sizeof(Codigo));
 }
 
-void percorrer(Compactador *compactador, No *atual,  char *codigo, int qtd, FILE *arq){
+void percorrer(Compactador *compactador, No *atual,  unsigned char *codigo, int qtd, FILE *arq){
     if(atual != NULL){
         if(atual->esq != NULL) {
             codigo[qtd] = '0';
@@ -21,7 +24,7 @@ void percorrer(Compactador *compactador, No *atual,  char *codigo, int qtd, FILE
         }
         if(atual->esq == NULL && atual->dir == NULL){
             compactador->codigo[atual->caracter].quantosBits = qtd;
-            compactador->codigo[atual->caracter].byte = (char*) malloc(sizeof(char) * qtd);
+            compactador->codigo[atual->caracter].byte = (unsigned char*) malloc(sizeof(unsigned char) * qtd);
             int i;
             for(i = 0; i < qtd; i++)
                 compactador->codigo[atual->caracter].byte[i] = codigo[i];
@@ -60,22 +63,22 @@ void compactarArquivo(Compactador *compactador, FILE *arq, FILE *entrada)
 {
     inteiro qtd;
     inteiro qtdAtual = 0;
-    char *aux;
-    char c;
+    unsigned char *aux;
+    unsigned char c;
     unsigned char saida = 0;
-    aux = (char*) malloc(sizeof(char) * altura(compactador->raiz));
+    aux = (unsigned char*) malloc(sizeof(unsigned char) * altura(compactador->raiz));
 
     percorrer(compactador, compactador->raiz, aux, 0, arq);
     free(aux);
 
     qtd = compactador->qtd;
+    while(fread(&c, sizeof(unsigned char), 1, entrada) && c != EOF){
 
-    while((c = fgetc(entrada)) != EOF){
         Codigo codigo = compactador->codigo[c];
-        int bits = codigo.quantosBits;
+        inteiro bits = codigo.quantosBits;
 
-        int j;
-        int difPra8 = 0;
+        inteiro j;
+        inteiro difPra8 = 0;
 
         if(bits + qtdAtual > 8)
             difPra8 = qtdAtual + bits - 8;
@@ -89,7 +92,7 @@ void compactarArquivo(Compactador *compactador, FILE *arq, FILE *entrada)
         qtdAtual += bits;
 
         if(qtdAtual >= 8) {
-            fwrite(&saida, sizeof(char), 1, arq);
+            fwrite(&saida, sizeof(unsigned char), 1, arq);
             fflush(arq);
              saida = 0;
             if (qtdAtual == 8)
@@ -102,7 +105,7 @@ void compactarArquivo(Compactador *compactador, FILE *arq, FILE *entrada)
                         saida |= (1u << (7 - (qtdAtual + j)));
                     if(j == 7)
                     {
-                        fwrite(&saida, sizeof(char), 1, arq);
+                        fwrite(&saida, sizeof(unsigned char), 1, arq);
                         fflush(arq);
                         saida = 0;
                         difPra8 -= 8;
@@ -119,7 +122,7 @@ void compactarArquivo(Compactador *compactador, FILE *arq, FILE *entrada)
     inteiro quantosLixos = 0;
     if(qtdAtual != 0) {
         quantosLixos = 8 - qtdAtual;
-        fwrite(&saida, sizeof(char), 1, arq);
+        fwrite(&saida, sizeof(unsigned char), 1, arq);
         fflush(arq);
     }
 

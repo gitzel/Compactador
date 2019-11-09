@@ -1,6 +1,10 @@
-//
-// Created by u18194 on 25/10/2019.
-//
+/*
+ *Cabeçalho da biblioteca Fila de Prioridade que armazena os Nos, onde existe um char para guardar o caracter, uma
+ frequencia que guarda quantas vezes ele aparece e dois ponteiros de No que apontam para a esquerda e direita do No atual.
+ Possui métodos para incluir, ordenar com base na frequencia, escrever no arquivo, montar uma arvore com base nos nós e sua
+ frequência, além de métodos auxiliares ao processo.
+ *Autores: Isabela Paulino de Souza e Gustavo Ferreira Gitzel
+*/
 
 #ifndef COMPACTADOR_FILAPRIORIDADE_H
 #define COMPACTADOR_FILAPRIORIDADE_H
@@ -14,9 +18,9 @@ typedef struct {
 }FilaPrioridade;
 
 extern void inicieFila(FilaPrioridade *fila, inteiro tamanho);
-extern void inserir(FilaPrioridade *fila, char caracter);
-extern void inserirCompactado(FilaPrioridade *fila, char caracter, inteiro freq);
-extern inteiro existe(FilaPrioridade *fila, char caracter);
+extern void inserir(FilaPrioridade *fila,unsigned char caracter);
+extern void inserirCompactado(FilaPrioridade *fila, unsigned char caracter, inteiro freq);
+extern inteiro existe(FilaPrioridade *fila,unsigned char caracter);
 extern void aumentarFrequencia(FilaPrioridade *fila, inteiro posicao);
 extern void encerrar(FilaPrioridade *fila);
 extern void printarFila(FilaPrioridade *, FILE *arq);

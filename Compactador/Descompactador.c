@@ -1,6 +1,9 @@
-//
-// Created by u18194 on 25/10/2019.
-//
+/*
+  *Implementação da biblioteca Descompactador que armazena uma arvore, onde existem nós para descompactar um arquivo.
+  Possui métodos para pegar a quantidade de lixo armazenada no arquivo, e um método para percorrê-lo e descompactá-lo. Além
+  de métodos auxiliares como verificar se um nó é folha.
+  *Autores: Isabela Paulino de Souza e Gustavo Ferreira Gitzel
+*/
 
 #include "Descompactador.h"
 #include <stdio.h>
@@ -36,12 +39,17 @@ void descompactarArquivo(Descompactador *descompactador, FILE *entrada,FILE *sai
 
     fseek(entrada, posOriginal - posFinal, SEEK_CUR);
 
-    while(!feof(entrada))
+    boolean acabou = false;
+
+    while(!feof(entrada) && acabou == false)
     {
         if(ftell(entrada) == posFinal)
+        {
             max = 8 - descompactador->qtdLixo;
+            acabou = true;
+        }
 
-        fread(&byte, sizeof(char), 1, entrada);
+        fread(&byte, sizeof(unsigned char), 1, entrada);
 
         for(i = 0; i < max; i++)
         {

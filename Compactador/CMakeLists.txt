@@ -3,4 +3,4 @@ project(Compactador C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(Compactador main.c Struct.h FilaPrioridade.h Compactador.h Compactador.c FilaPrioridade.c Descompactador.h Descompactador.c)
+add_executable(Compactador main.c Struct.h FilaPrioridade.h Compactador.h Compactador.c FilaPrioridade.c Descompactador.h Descompactador.c UserInterface.h UserInterface.c)
